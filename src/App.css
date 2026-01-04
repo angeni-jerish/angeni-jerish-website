@@ -284,6 +284,7 @@ html, body, #root {
     width: 100%;     /* take full width of container */
     max-width: 300px; /* limit max width so it’s not too big */
     height: 200px;    /* adjust height proportionally */
+    padding-right: 1rem;
   }
 
   .swiper-slide img {
@@ -299,6 +300,7 @@ html, body, #root {
   .contact-info {
     width: 100%;
     margin-left: 0;
+    padding-right: 1rem;
     margin-top: 1rem;
   }
 
