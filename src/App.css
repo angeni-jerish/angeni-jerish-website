@@ -284,7 +284,6 @@ html, body, #root {
     width: 100%;     /* take full width of container */
     max-width: 300px; /* limit max width so it’s not too big */
     height: 200px;    /* adjust height proportionally */
-    margin-left: -3rem;
   }
 
   .swiper-slide img {
