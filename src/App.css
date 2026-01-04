@@ -224,15 +224,13 @@ html, body, #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 400px;
-  max-width: 500px; 
+  min-width: 400px; 
   height: 400px;     
   margin-top: 2rem;
 }
 
 .swiper {
   width: 100%;
-  max-width: 500px;
   height: 300px;
 }
 
