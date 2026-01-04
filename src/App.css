@@ -220,27 +220,28 @@ html, body, #root {
 }
 
 .images {
-  flex: 1 1 250px; /* flexible width */
+  flex: 1 1 400px; 
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 0; /* prevents overflow */
-  max-width: 100%; /* ensure it doesn’t exceed parent */
+  min-width: 400px;
+  max-width: 500px; 
+  height: 400px;     
   margin-top: 2rem;
 }
 
+/* Default desktop size */
 .swiper {
-  width: 100%;         /* take full width of container */
-  max-width: 450px;    /* desktop max size */
+  width: 450px;
   height: 300px;
 }
 
 .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* prevents cropping/zooming */
+  object-fit: contain;
   border-radius: 1rem;
-  max-width: 100%;      /* never overflow container */
+  background-color: #222;
 }
 
 /* ===========================
@@ -278,18 +279,15 @@ html, body, #root {
   .title {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
-   
-  .images {
-    margin-top: 1rem;
-  }
 
   .swiper {
-    max-width: 100%;    /* full width on mobile */
-    height: 200px;
+    width: 100%;     /* take full width of container */
+    max-width: 300px; /* limit max width so it’s not too big */
+    height: 200px;    /* adjust height proportionally */
   }
 
   .swiper-slide img {
-    max-width: 100%;
+    width: 100%;
     height: 100%;
   }
 
