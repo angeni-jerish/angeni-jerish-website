@@ -1,31 +1,48 @@
-#root {
-  width: 100%;
-  margin: 0 auto;
-  text-align: start;
+/* ===========================
+   Root & Global Styles
+=========================== */
+:root {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  color: #ccc;
+  background-color: #222;
+  line-height: 1.5;
 }
 
-.app{
-  margin-left: 2rem;
-  margin-right:2rem;
-  position:static;
-}
-.title{
-  margin-top: 3rem;
-  position: static;
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 3rem;
-  color: #ccc;
-}
-.header {
+html, body, #root {
   width: 100%;
-  font-size: 5rem;
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: #ccc;
+  background-color: #222;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ===========================
+   App & Headers
+=========================== */
+.app {
+  margin: 0 2rem;
+}
+
+.header {
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   color: #ff69b4;
+  width: 100%;
 }
-.nested {
-  margin-left: 2rem;
+
+.title {
+  margin-top: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #ccc;
 }
+
 .cursor {
   display: inline-block;
   animation: blink 1s step-start infinite;
@@ -35,193 +52,211 @@
   50% { opacity: 0; }
 }
 
-.sections {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 1rem;
-}
+/* ===========================
+   File Tree
+=========================== */
 .file-tree {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  position: static;
+  font-family: inherit;
   background-color: #333;
   width: 95%;
-  padding: 1rem 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  overflow-x: auto;
 }
 
-.file {
+.file, .file-names {
   font-size: 1.2rem;
-  font-weight: 40;
+  font-weight: 400;
   color: #ccc;
-}
-
-.file-names {
-  margin-left: 2rem;
-  font-size: 1.2rem;
-  font-weight: 40;
   cursor: pointer;
-  color: #ccc;
 }
 
-.about-section {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  display:flex;
-  flex-direction: row;
-  color: #ccc;
-  width: 95%;
-  position: static;
-}
-.contact-text {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 1rem;
-  color: #ccc;
-  width: 100%;
-  position: static;
-}
-.contact-section {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 1.3rem;
-  color: white;
-  margin-top: 2rem;
+.nested {
   margin-left: 2rem;
-  position: static;
+}
+
+/* ===========================
+   About Section
+=========================== */
+.about-section {
   display: flex;
   flex-direction: row;
-  gap:3rem;
-}
-.contact-info{
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  align-items: center;
+  gap: 1.5rem;
   font-size: 1.2rem;
-  margin-top: 6rem;
-  margin-left: 6rem;
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+}
+
+.about-section .img {
+  width: 200px;
+  height: auto;
+  border-radius: 2rem;
+}
+
+/* ===========================
+   Contact Section
+=========================== */
+.contact-text {
+  font-size: 1rem;
+}
+
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-info {
+  font-size: 1.2rem;
   padding: 1rem 2rem;
   border-radius: 2rem;
+  margin-top: 3rem;
+  margin-left: 3rem;
   color: #ccc;
-  position: static;
   background-color: #333;
 }
-.button{
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  flex-direction: row;
-  width: 9.5rem;
-  height:3rem;
-  padding: 1rem 1.2rem;
-  border-radius: 0.5rem;
+
+/* Buttons */
+.button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   cursor: pointer;
-  position: static; 
-}
-.projects-section {
-  
-  font-size: 1.2rem;
-  color: white;
-  width: 100%;
-  
-  position: static;
-}
-.project-details{
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  width:100%;
-}
-.proj-container{
-  display: flex;
-  flex-direction: row;
-  width:95%;
-  gap:2rem;
-}
-.tech-eng{
-  flex-direction: row;
-  width: 50%;
-  cursor: pointer;
-  margin-bottom: 0.5rem;
-  padding: 0rem 3rem;
-  border-radius: 2rem;
-  background: #ff69b4;
-  position: static; 
 }
 
-.tech-eng.clicked{
+/* ===========================
+   Projects Section
+=========================== */
+.projects-section {
+  width: 100%;
+}
+
+.proj-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tech-eng {
+  flex: 1 1 250px;
+  cursor: pointer;
+  min-height: 12rem;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  background: #ff69b4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tech-eng.clicked {
   background: #646cff;
 }
 
-
-.points ul {
+/* ===========================
+   Project Details
+=========================== */
+.project-details {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;   
-  padding-left: 1.5rem; 
-  margin: 0;
-}
-
-.points li {
-  line-height: 1.6;
-}
-
-.images {
-  flex: 1;
-  width:500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 .image-container {
   background-color: #333;
   border-radius: 2rem;
-  padding: 1rem 3rem;
-  padding-bottom: 3rem;
+  margin-top: 3rem;
+  padding: 1rem 2rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between; 
-  align-items: center;
-  gap: 3rem;
-  width: 90%;
-  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
 }
 
+.text-column {
+  flex: 1 1 250px;
+  min-width: 0;
+}
+
+.narrow {
+  max-width: 100%;
+}
+
+.points ul,
+.skills ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-left: 1.5rem;
+}
+
+.points li,
+.skills li {
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.images {
+  flex: 1 1 250px;
+  display: flex;
+  margin-top: 7rem;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
 
 .swiper {
   width: 100%;
-  max-width: 500px;
-  height: 400px;
-}
-
-.swiper-wrapper {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  max-width: 450px;
+  height: 300px;
 }
 
 .swiper-slide img {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
   object-fit: contain;
+  border-radius: 0.5rem;
 }
 
-.img{
-  border-radius: 2rem;
-  width: 300px;
-  height: auto;
-  margin-right: 2rem;
-}
-.read-the-docs {
-  color: #888;
+/* ===========================
+   Responsive Mobile
+=========================== */
+@media (max-width: 768px) {
+  .proj-container {
+    flex-direction: column;
+  }
+
+  .image-container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .tech-eng {
+    min-height: 10rem;
+    padding: 1rem;
+  }
+
+  .about-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-section .img {
+    width: 150px;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
 }
