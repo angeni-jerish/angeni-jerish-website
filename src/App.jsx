@@ -304,7 +304,7 @@ function App() {
                   <div style={{ marginLeft: "2rem"}}>
                     <h1 className="title" style={{ fontWeight: "normal" }}>Hi, I'm Angeni! 🌺</h1>
                     <p>
-                      I’m a <b>first-year</b> student in the Engineering I program at
+                      I’m a <b>first-year</b> student in the Engineering I program at 
                       <b>McMaster University</b>. As an aspiring <b>mechatronics engineer</b>, I enjoy turning
                       ideas into things that actually work and experimenting with new tools and technologies to bring those ideas to life.
                     </p>
