@@ -1,0 +1,228 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+  text-align: start;
+}
+
+.app{
+  margin-left: 2rem;
+  margin-right:2rem;
+  position:static;
+}
+.title{
+  margin-top: 3rem;
+  position: static;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 3rem;
+  color: #ccc;
+}
+.header {
+  width: 100%;
+  font-size: 5rem;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #ff69b4;
+}
+.nested {
+  margin-left: 2rem;
+}
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+}
+.file-tree {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  position: static;
+  background-color: #333;
+  width: 95%;
+  padding: 1rem 1rem;
+}
+
+.file {
+  font-size: 1.2rem;
+  font-weight: 40;
+  color: #ccc;
+}
+
+.file-names {
+  margin-left: 2rem;
+  font-size: 1.2rem;
+  font-weight: 40;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.about-section {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  display:flex;
+  flex-direction: row;
+  color: #ccc;
+  width: 95%;
+  position: static;
+}
+.contact-text {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  color: #ccc;
+  width: 100%;
+  position: static;
+}
+.contact-section {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  color: white;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  position: static;
+  display: flex;
+  flex-direction: row;
+  gap:3rem;
+}
+.contact-info{
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  margin-top: 6rem;
+  margin-left: 6rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  color: #ccc;
+  position: static;
+  background-color: #333;
+}
+.button{
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  flex-direction: row;
+  width: 9.5rem;
+  height:3rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: static; 
+}
+.projects-section {
+  
+  font-size: 1.2rem;
+  color: white;
+  width: 100%;
+  
+  position: static;
+}
+.project-details{
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width:100%;
+}
+.proj-container{
+  display: flex;
+  flex-direction: row;
+  width:95%;
+  gap:2rem;
+}
+.tech-eng{
+  flex-direction: row;
+  width: 50%;
+  cursor: pointer;
+  height: 13rem;
+  margin-bottom: 0.5rem;
+  padding: 0rem 3rem;
+  border-radius: 2rem;
+  background: #ff69b4;
+  position: static; 
+}
+
+.tech-eng.clicked{
+  background: #646cff;
+}
+
+
+.points ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;   
+  padding-left: 1.5rem; 
+  margin: 0;
+}
+
+.points li {
+  line-height: 1.6;
+}
+
+.images {
+  flex: 1;
+  width:500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image-container {
+  background-color: #333;
+  border-radius: 2rem;
+  padding: 1rem 3rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 3rem;
+  width: 90%;
+  margin-bottom: 2rem;
+}
+
+
+.swiper {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+}
+
+.swiper-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.img{
+  border-radius: 2rem;
+  width: 300px;
+  height: auto;
+  margin-right: 2rem;
+}
+.read-the-docs {
+  color: #888;
+}
