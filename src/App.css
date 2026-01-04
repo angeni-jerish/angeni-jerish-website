@@ -220,25 +220,27 @@ html, body, #root {
 }
 
 .images {
-  flex: 1 1 250px;
+  flex: 1 1 400px; 
   display: flex;
-  margin-top: 7rem;
   justify-content: center;
   align-items: center;
-  min-width: 0;
+  min-width: 400px;
+  max-width: 500px; 
+  height: 400px;     
+  margin-top: 2rem;
 }
 
 .swiper {
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   height: 300px;
 }
 
 .swiper-slide img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 1rem;
 }
 
 /* ===========================
