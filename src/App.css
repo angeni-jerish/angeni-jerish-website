@@ -229,8 +229,9 @@ html, body, #root {
   margin-top: 2rem;
 }
 
+/* Default desktop size */
 .swiper {
-  width: 100%;
+  width: 450px;
   height: 300px;
 }
 
@@ -239,6 +240,7 @@ html, body, #root {
   height: 100%;
   object-fit: contain;
   border-radius: 1rem;
+  background-color: #222;
 }
 
 /* ===========================
@@ -275,6 +277,16 @@ html, body, #root {
 
   .title {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+   .swiper {
+    width: 100%;     /* take full width of container */
+    max-width: 300px; /* limit max width so it’s not too big */
+    height: 200px;    /* adjust height proportionally */
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
   }
 
   /* Contact section mobile stacking */
