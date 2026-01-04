@@ -102,7 +102,6 @@ html, body, #root {
 
 .contact-section {
   display: flex;
-   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -112,7 +111,6 @@ html, body, #root {
   padding: 1rem 2rem;
   border-radius: 2rem;
   margin-top: 3rem;
-  margin-left: 3rem;
   color: #ccc;
   background-color: #333;
 }
