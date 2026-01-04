@@ -237,7 +237,7 @@ html, body, #root {
 .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   border-radius: 1rem;
 }
 
