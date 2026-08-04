@@ -4,28 +4,27 @@
   text-align: start;
 }
 
-.app{
-  margin-left: 2rem;
-  margin-right:2rem;
-  position:static;
+.app {
+  position: static;
+  overflow-x: hidden;
 }
-.title{
+
+.title {
   margin-top: 3rem;
   position: static;
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 3rem;
+  font-size: 2.5rem;
+  font-weight: 600;
   color: #ccc;
 }
+
 .header {
-  width: 100%;
-  font-size: 5rem;
+  font-size: 4rem;
   font-family: 'Fira Code', 'JetBrains Mono', monospace;
   font-weight: 700;
   color: #ff69b4;
+  margin: 0;
 }
-.nested {
-  margin-left: 2rem;
-}
+
 .cursor {
   display: inline-block;
   animation: blink 1s step-start infinite;
@@ -35,129 +34,228 @@
   50% { opacity: 0; }
 }
 
-.sections {
+/* ---------- Hover pop (shared micro-interaction) ---------- */
+.hover-pop {
+  transition: transform 0.25s ease;
+}
+.hover-pop:hover {
+  animation: wiggle 0.4s ease;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg) scale(1.08); }
+  25% { transform: rotate(-4deg) scale(1.08); }
+  50% { transform: rotate(4deg) scale(1.08); }
+  75% { transform: rotate(-2deg) scale(1.08); }
+  100% { transform: rotate(0deg) scale(1.08); }
+}
+
+/* ---------- Landing ---------- */
+.landing {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1rem;
-}
-.file-tree {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  position: static;
-  background-color: #333;
-  width: 95%;
-  padding: 1rem 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
 }
 
-.file {
-  font-size: 1.2rem;
-  font-weight: 40;
-  color: #ccc;
-}
-
-.file-names {
-  margin-left: 2rem;
-  font-size: 1.2rem;
-  font-weight: 40;
-  cursor: pointer;
-  color: #ccc;
-}
-
-.about-section {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  display:flex;
-  flex-direction: row;
-  color: #ccc;
-  width: 95%;
-  position: static;
-}
-.contact-text {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 1rem;
-  color: #ccc;
-  width: 100%;
-  position: static;
-}
-.contact-section {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 1.3rem;
-  color: white;
-  margin-top: 2rem;
-  margin-left: 2rem;
-  position: static;
+.landing-content {
   display: flex;
   flex-direction: row;
-  gap:3rem;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1100px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.contact-info{
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  margin-top: 6rem;
-  margin-left: 6rem;
-  width: fit-content;
-  height: fit-content;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
+
+.landing-photo {
+  width: 280px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  border: 3px solid #ff69b4;
+  cursor: pointer;
+}
+
+.landing-text {
+  max-width: 520px;
+}
+
+.landing-bio {
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: #ccc;
-  position: static;
-  background-color: #333;
+  margin-top: 1.5rem;
 }
-.button{
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+
+/* ---------- Contact ---------- */
+.contact-row {
+  display: flex;
   flex-direction: row;
-  width: 9.5rem;
-  height:3rem;
-  padding: 1rem 1.2rem;
-  border-radius: 0.5rem;
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.contact-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  transition: color 0.25s ease;
+}
+.contact-icon-link:hover {
+  color: #ff69b4;
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- Scroll hint ---------- */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #888;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.scroll-hint.visible {
+  opacity: 1;
+}
+.scroll-hint-arrow {
+  animation: bounce 1.4s infinite;
+  font-size: 1.2rem;
+  color: #ff69b4;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ---------- File row ---------- */
+.file-row-section {
+  padding: 4rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-row-hint {
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.file-row {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.file-icon {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: #eee;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.pixel-icon-wrap {
+  position: relative;
+}
+.pixel-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ---------- Content sections ---------- */
+.content-section {
+  min-height: 60vh;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  position: static; 
+  justify-content: center;
+  padding: 2rem 1rem;
+  scroll-margin-top: 2rem;
 }
+
+.placeholder-panel {
+  text-align: center;
+  color: #ccc;
+}
+
+/* ---------- Projects (kept for future use) ---------- */
 .projects-section {
-  
   font-size: 1.2rem;
   color: white;
   width: 100%;
-  
-  position: static;
+  text-align: center;
 }
-.project-details{
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+
+.projects-hint {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.project-details {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  width:100%;
+  width: 100%;
+  text-align: left;
 }
-.proj-container{
+
+.proj-container {
   display: flex;
   flex-direction: row;
-  width:95%;
-  gap:2rem;
-}
-.tech-eng{
-  flex-direction: row;
-  width: 50%;
-  cursor: pointer;
-  height: 13rem;
-  margin-bottom: 0.5rem;
-  padding: 0rem 3rem;
-  border-radius: 2rem;
-  background: #ff69b4;
-  position: static; 
+  width: 100%;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.tech-eng.clicked{
+.tech-eng {
+  flex: 1;
+  min-width: 260px;
+  max-width: 420px;
+  cursor: pointer;
+  padding: 1.5rem 2rem;
+  border-radius: 1.5rem;
+  background: #ff69b4;
+  text-align: left;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.tech-eng:hover {
+  transform: translateY(-4px);
+}
+
+.tech-eng.clicked {
   background: #646cff;
 }
-
 
 .points ul {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;   
-  padding-left: 1.5rem; 
+  gap: 1.25rem;
+  padding-left: 1.5rem;
   margin: 0;
 }
 
@@ -167,7 +265,7 @@
 
 .images {
   flex: 1;
-  width:500px;
+  width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,13 +279,13 @@
   padding-bottom: 3rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   gap: 3rem;
   width: 90%;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
+  flex-wrap: wrap;
 }
-
 
 .swiper {
   width: 100%;
@@ -217,12 +315,19 @@
   object-fit: contain;
 }
 
-.img{
-  border-radius: 2rem;
-  width: 300px;
-  height: auto;
-  margin-right: 2rem;
-}
 .read-the-docs {
   color: #888;
+}
+
+@media (max-width: 700px) {
+  .header {
+    font-size: 2.6rem;
+  }
+  .landing-photo {
+    width: 220px;
+    height: 280px;
+  }
+  .file-row {
+    gap: 1.5rem;
+  }
 }
