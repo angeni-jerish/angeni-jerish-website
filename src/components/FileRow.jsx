@@ -1,5 +1,5 @@
-import PixelIcon from './PixelIcon';
-import { FOLDER_PATTERN } from './pixelPatterns';
+import openFile from '../assets/open_file.png';
+import closeFile from '../assets/close_file.png';
 import { FILES } from './files';
 
 function scrollToSection(id) {
@@ -18,7 +18,10 @@ function FileRow() {
             className="file-icon hover-pop"
             onClick={() => scrollToSection(file.id)}
           >
-            <PixelIcon pattern={FOLDER_PATTERN} color="#ff69b4" />
+            <span className="file-icon-image">
+              <img src={openFile} alt="" className="file-icon-closed" />
+              <img src={closeFile} alt="" className="file-icon-open" />
+            </span>
             <span>{file.label}</span>
           </button>
         ))}

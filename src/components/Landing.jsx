@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import aboutme from '../assets/about.jpg';
+import aboutme from '../assets/about.png';
 import { MailIcon, LinkedInIcon, GithubIcon } from './ContactIcons';
 
-const NAME = "Hello, I'm Angeni";
+const NAME = "Hello, I'm Angeni!";
 const IDLE_DELAY = 4000;
 
 function Landing() {
@@ -33,8 +33,9 @@ function Landing() {
   return (
     <section className="landing">
       <div className="landing-content">
+        <div>
         <img src={aboutme} alt="Angeni" className="landing-photo hover-pop" />
-
+        </div>
         <div className="landing-text">
           <h1 className="header">
             <span>{displayed}</span>
