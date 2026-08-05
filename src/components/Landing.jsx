@@ -33,9 +33,6 @@ function Landing() {
   return (
     <section className="landing">
       <div className="landing-content">
-        <div>
-        <img src={aboutme} alt="Angeni" className="landing-photo hover-pop" />
-        </div>
         <div className="landing-text">
           <h1 className="header">
             <span>{displayed}</span>
