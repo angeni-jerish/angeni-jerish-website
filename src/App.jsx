@@ -1,265 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
-import EmailIcon from './assets/email-icon-inbox-icon-letter-icon-message-icon-text-icon-logo-line-arrow-symbol-blackandwhite-png-clipart-removebg-preview.png';
-import LinkedIn from './assets/Linkedin-logo-on-transparent-PNG--removebg-preview.png'; 
-import Github from './assets/25231-removebg-preview.png';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import aboutme from './assets/about.jpg';
-import roboarm1 from './assets/roboarm1.png';
-import roboarm2 from './assets/roboarm2.png';
-import roboarm3 from './assets/roboarm3.png';
-import roboarm4 from './assets/roboarm4.png';
-import sumo from './assets/sumo.png';
-import rollercoaster from './assets/rollercoaster.jpg';
-import mood1 from './assets/mood1.png';
-import mood2 from './assets/mood2.png';
-import mood3 from './assets/mood3.png';
-import mood4 from './assets/mood4.png';
-import mood5 from './assets/mood5.png';
-import mood6 from './assets/mood6.png';
-
-
+import Landing from './components/Landing';
+import FileRow from './components/FileRow';
+import ComingSoonSections from './components/ComingSoonSections';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
-  const [displayed, setDisplayed] = useState('');
-  const [open, setOpen] = useState('+');
-  const [projects, setProjects] = useState(false);
-  const [projectDisplay, setProjectDisplay] = useState(false);
-  const [about, setAbout] = useState(false);
-  const [activeProject, setActiveProject] = useState(null);
-  const [contact, setContact] = useState(false);
-  const techProj = [
-  { id: 1, 
-    name: 'Mood Tracker App', 
-    skills: [
-      {id:1, skill: 'React Native'}, 
-      {id:2, skill: 'JavaScript'}, 
-      {id:3, skill: 'VS Code'}
-    ], 
-    points: [
-      {id:1, point: 'Developed a mobile application aimed at addressing teen mental health challenges through daily tracking and habit formation'}, 
-      {id:2, point: 'Implemented core features including daily journaling, mood logging, and user reminders'}, 
-      {id:3, point: 'Focused on UI/UX optimization by utilizing dynamic rendering and state management to ensure an intuitive user experience'}
-    ], 
-    imgs:[
-      {id:1, img: mood1}, 
-      {id:2, img: mood2}, 
-      {id:3, img: mood3},
-      {id:4, img: mood4}, 
-      {id:5, img: mood5}, 
-      {id:6, img: mood6}
-    ]
-  }];
-  const engProj = [
-  { 
-    id: 1, 
-    name: 'Autonomous SumoBot Design', 
-    skills: [
-      {id:1, skill: 'Arduino'}, 
-      {id:2, skill: 'CAD'}, 
-      {id:3, skill: 'Wiring'}
-    ], 
-    points: [
-      {id:1, point: 'Collaborated with a team of hardware and software developers to engineer an autonomous robot for competitive performance'}, 
-      {id:2, point: 'Utilized iterative CAD modeling to refine the chassis design and optimize sensor placement for better responsiveness'}, 
-      {id:3, point: 'Programmed the robot using Arduino to enhance movement control and autonomous navigation'}
-    ], 
-    imgs:[
-      {id:1, img: sumo}
-    ]
-  },
-  { 
-    id: 2, 
-    name: 'Robotic Arm Object Retrieval Mechanism', 
-    skills: [
-      {id:1, skill: 'Python'}, 
-      {id:2, skill: 'CAD'}, 
-      {id:3, skill: 'PrusaSlicer'}
-    ], 
-    points: [
-      {id:1, point: 'Served as Project Coordinator for a four-person team to design and deliver a Q-Arm package-lifting mechanism'}, 
-      {id:2, point: 'Set up a virtual machine environment and integrated Python scripts to enable autonomous package movement'}, 
-      {id:3, point: 'Designed precise mechanical components using CAD and PrusaSlicer, producing 3D-printed parts that improved grip and stability'},
-      {id:4, point: 'Achieved a success rate of over 80% during autonomous testing and delivered the project one week ahead of schedule'}
-    ], 
-    imgs:[
-      {id:1, img: roboarm1}, 
-      {id:2, img: roboarm2}
-    ]
-  },
-  { 
-    id: 3, 
-    name: 'Energy Efficient Roller Coaster', 
-    skills: [
-      {id:1, skill: 'Data Analysis'}, 
-      {id:2, skill: 'Physical Modelling'}
-    ], 
-    points: [
-      {id:1, point: 'Conducted research on energy efficiency concepts by building and testing a physical prototype'}, 
-      {id:2, point: 'Constructed a cardboard model to collect and analyze data regarding friction and heat loss'}, 
-      {id:3, point: 'Proposed improvements for energy recovery—such as powering auxiliary lights—which increased theoretical system efficiency by 10%'}
-    ], 
-    imgs:[
-      {id:1, img: rollercoaster}, 
-    ]
-  }];
-  const [file, setFile] = useState({
-    about: '📁',
-    projects: '📁',
-    contact: '📁',
-    tech: '📁',
-    engineering: '📁',
-  });
-
-  useEffect(() => {
-    const str = "Hello, I'm Angeni";
-    for (let i = 0; i <= str.length; i++) {
-      setTimeout(() => {
-        setDisplayed(str.substring(0, i));
-      }, 100 * i);
-    }
-  }, []);
-
-  const fileChange = (fileName) => {
-    setFile((prev) => {
-      const newState = { ...prev };
-      newState[fileName] = prev[fileName] === '📁' ? '📂' : '📁';
-      return newState;
-    });
-  };
-  
-  const openProjects = () => {
-    fileChange('projects');
-    if (open === '+') {
-      setOpen('-');
-      setProjects(true);
-
-      setProjectDisplay(true);
-    } else {
-      setOpen('+');
-      setProjects(false);
-      setProjectDisplay(false);
-      setActiveProject(null);
-    }
-  };
-
-  const selectProject = (type) => {
-  setActiveProject((prev) => {
-    const isClosing = prev === type; 
-    setFile((prevFile) => ({
-      ...prevFile,
-      tech: type === 'tech' && !isClosing ? '📂' : '📁',
-      engineering: type === 'engineering' && !isClosing ? '📂' : '📁',
-    }));
-    return isClosing ? null : type;
-  });
-};
-
-  const openAbout = () => {
-    fileChange('about');
-    setAbout((prev) => !prev);
-  } 
-  const openContact = () => {
-    fileChange('contact');
-    setContact((prev) => !prev);
-  }
-
-  const techSkills = (project) => {
-    return project.skills.map(p => <li key={p.id}>{p.skill}</li>);
-  };
-
-  const engSkills = (project) => {
-    return project.skills.map(p => <li key={p.id}>{p.skill}</li>);
-  };
-
-  const techPoints = (project) => {
-    return project.points.map(p => <li key={p.id}>{p.point}</li>);
-  };
-
-  const engPoints = (project) => {
-    return project.points.map(p => <li key={p.id}>{p.point}</li>);
-  };
-
-  const techImages = (project) => {
-    return project.imgs.map((imgs) => <SwiperSlide><img key={imgs.id} src={imgs.img} alt="Project Image" /></SwiperSlide>);
-  };
-
-  const engImages = (project) => {
-    return project.imgs.map((imgs) => <SwiperSlide><img key={imgs.id} src={imgs.img} alt="Project Image" /></SwiperSlide >)
-  };
-
-  const techProjects = () => {
-  return techProj.map((project) => (
-    <div className="image-container" key={project.id}>
-      
-      <div className="text-column">
-        <div className="title">{project.name}</div>
-
-        <h3 className="skills-header">Skills</h3>
-        <div className="narrow">
-          <ul>{techSkills(project)}</ul>
-        </div>
-
-        <h3 className="points-header">Overview</h3>
-        <div className="narrow">
-          <ul>{techPoints(project)}</ul>
-        </div>
-      </div>
-
-      <div className="images">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          navigation
-          pagination={{ clickable: true }}
-          spaceBetween={20}
-          slidesPerView={1}
-        >
-          {techImages(project)}
-        </Swiper>
-      </div>
-
-    </div>
-  ));
-};
-
-  const engProjects = () => {
-  return engProj.map((project) => (
-    <div className="image-container" key={project.id}>
-      <div className="text-column">
-        <div className="title">{project.name}</div>
-
-        <h3 className="skills-header">Skills</h3>
-        <div className="narrow">
-          <ul>{engSkills(project)}</ul>
-        </div>
-
-        <h3 className="points-header">Overview</h3>
-        <div className="narrow">
-          <ul>{engPoints(project)}</ul>
-        </div>
-      </div>
-
-      <div className="images">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          navigation
-          pagination={{ clickable: true }}
-          spaceBetween={20}
-          slidesPerView={1}
-        >
-          {engImages(project)}
-        </Swiper>
-      </div>
-
-    </div>
-  ));
-};
+  const [loading, setLoading] = useState(true);
+  const [photoVisible, setPhotoVisible] = useState(false);
 
   return (
+<<<<<<< HEAD
     <>
       <div className="app">
         <h1 className="header">
@@ -418,8 +169,20 @@ function App() {
         </div>
       </div>
     </>
+=======
+    <div className="app">
+      {loading && (
+        <LoadingScreen
+          onLanded={() => setPhotoVisible(true)}
+          onComplete={() => setLoading(false)}
+        />
+      )}
+      <Landing photoVisible={photoVisible} />
+      <FileRow />
+      <ComingSoonSections />
+    </div>
+>>>>>>> website2.0
   );
 }
 
 export default App;
-
