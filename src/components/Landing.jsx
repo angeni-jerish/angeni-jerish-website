@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import aboutme from '../assets/about.png';
+import happy from '../assets/happy.png';
 import { MailIcon, LinkedInIcon, GithubIcon } from './ContactIcons';
 
 const NAME = "Hello, I'm Angeni!";
 const IDLE_DELAY = 4000;
 
-function Landing() {
+function Landing({ photoVisible = true }) {
   const [displayed, setDisplayed] = useState('');
   const [showHint, setShowHint] = useState(false);
 
@@ -33,6 +34,12 @@ function Landing() {
   return (
     <section className="landing">
       <div className="landing-content">
+        <img
+          id="landing-photo-target"
+          src={happy}
+          alt="Angeni smiling"
+          className={`landing-photo ${photoVisible ? 'visible' : ''}`}
+        />
         <div className="landing-text">
           <h1 className="header">
             <span>{displayed}</span>
