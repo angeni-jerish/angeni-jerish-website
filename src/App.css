@@ -1,46 +1,28 @@
-/* ===========================
-   Root & Global Styles
-=========================== */
-:root {
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
-  color: #ccc;
-  background-color: #222;
-  line-height: 1.5;
-}
-
-html, body, #root {
+#root {
+  font-family: 'Pixelify Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
   width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  color: #ccc;
-  background-color: #222;
+  margin: 0 auto;
+  text-align: start;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* ===========================
-   App & Headers
-=========================== */
 .app {
-  margin: 0 2rem;
-}
-
-.header {
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 700;
-  color: #ff69b4;
-  width: 100%;
+  position: static;
+  overflow-x: hidden;
 }
 
 .title {
   margin-top: 3rem;
-  font-size: clamp(2rem, 5vw, 3rem);
+  position: static;
+  font-size: 2.5rem;
+  font-weight: 600;
   color: #ccc;
+}
+
+.header {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #ff69b4;
+  margin: 0;
 }
 
 .cursor {
@@ -52,259 +34,313 @@ html, body, #root {
   50% { opacity: 0; }
 }
 
-/* ===========================
-   File Tree
-=========================== */
-.file-tree {
-  font-family: inherit;
-  background-color: #333;
-  width: 95%;
-  padding: 1rem;
-  border-radius: 1rem;
-  overflow-x: auto;
+/* ---------- Hover pop (shared micro-interaction) ---------- */
+
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-4deg) scale(1); }
+  50% { transform: rotate(4deg) scale(1); }
+  75% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(0deg) scale(1); }
 }
 
-.file, .file-names {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #ccc;
-  cursor: pointer;
+.hover-pop {
+  transition: transform 0.25s ease;
+}
+.hover-pop:hover {
+  animation: wiggle 1.5s ease;
+}
+/* ---------- Landing ---------- */
+.landing {
+  min-height: 100vh;
+  object-fit: scale-down;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
 }
 
-.nested {
-  margin-left: 2rem;
-}
-
-/* ===========================
-   About Section
-=========================== */
-.about-section {
+.landing-content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
-  font-size: 1.2rem;
-  width: 100%;
-}
-
-.about-section .img {
-  width: 200px;
-  height: auto;
-  border-radius: 2rem;
-}
-
-/* ===========================
-   Contact Section
-=========================== */
-/* New wrapper for desktop layout */
-.contact-section-wrapper {
-  display: flex;
+  object-fit: scale-down;
+  gap: 6rem;
+  max-width: 1100px;
   flex-wrap: wrap;
-  gap: 2rem;
-  align-items: flex-start;
+  position: relative;
+  justify-content: center;
+}
+.landing-photo {
+  width: clamp(320px, 32vw, 500px);
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  margin-top: -8rem;
+  scale: 1.2;
+}
+.landing-photo.visible {
+  opacity: 1;
 }
 
-.contact-text {
-  flex: 1 1 300px; /* buttons column */
+.landing-text {
+  max-width: 520px;
+  font-size: 7rem;
+}
+
+.landing-bio {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  font-weight: 100;
+  color: #ccc;
+  margin-top: 1.5rem;
+}
+
+/* ---------- Contact ---------- */
+.contact-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.contact-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  transition: color 0.25s ease;
+}
+.contact-icon-link:hover {
+  color: #ff69b4;
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- Scroll hint ---------- */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  font-size: 1rem;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #888;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
 }
-
-.contact-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+.scroll-hint.visible {
+  opacity: 1;
 }
-
-/* Widened contact menu */
-.contact-info {
-  flex: 0 0 400px; /* increased from 250px to 400px */
+.scroll-hint-arrow {
+  animation: bounce 1.4s infinite;
   font-size: 1.2rem;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
-  color: #ccc;
-  background-color: #333;
-  margin-top: 3rem; 
+  color: #ff69b4;
 }
-/* Buttons */
-.button {
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ---------- File row ---------- */
+.file-row-section {
+  padding: 4rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-row-hint {
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.file-row {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.file-icon {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: #eee;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.file-icon-image {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.file-icon-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  transition: opacity 0.2s ease;
+}
+.file-icon-open {
+  opacity: 0;
+}
+.file-icon:hover .file-icon-closed {
+  opacity: 0;
+}
+.file-icon:hover .file-icon-open {
+  opacity: 1;
+}
+
+/* ---------- Content sections ---------- */
+.content-section {
+  min-height: 60vh;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
+  justify-content: center;
+  padding: 2rem 1rem;
+  scroll-margin-top: 2rem;
 }
 
-.button img {
-  width: 30px;
-  height: 30px;
+.placeholder-panel {
+  text-align: center;
+  color: #ccc;
 }
 
-/* ===========================
-   Projects Section
-=========================== */
+/* ---------- Projects (kept for future use) ---------- */
 .projects-section {
+  font-size: 1.2rem;
+  color: white;
   width: 100%;
+  text-align: center;
+}
+
+.projects-hint {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.project-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: left;
 }
 
 .proj-container {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
 }
 
 .tech-eng {
-  flex: 1 1 250px;
+  flex: 1;
+  min-width: 260px;
+  max-width: 420px;
   cursor: pointer;
-  min-height: 12rem;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 1.5rem;
   background: #ff69b4;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  text-align: left;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.tech-eng:hover {
+  transform: translateY(-4px);
 }
 
 .tech-eng.clicked {
   background: #646cff;
 }
 
-/* ===========================
-   Project Details
-=========================== */
-.project-details {
+.points ul {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-  width: 100%;
+  gap: 1.25rem;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.points li {
+  line-height: 1.6;
+}
+
+.images {
+  flex: 1;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .image-container {
   background-color: #333;
   border-radius: 2rem;
-  margin-top: 3rem;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
+  padding-bottom: 3rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  gap: 3rem;
+  width: 90%;
+  margin: 0 auto 2rem;
+  flex-wrap: wrap;
+}
+
+.swiper {
   width: 100%;
+  max-width: 500px;
+  height: 400px;
 }
 
-.text-column {
-  flex: 1 1 250px;
-  min-width: 0;
-}
-
-.narrow {
-  max-width: 100%;
-}
-
-.points ul,
-.skills ul {
+.swiper-wrapper {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding-left: 1.5rem;
+  align-items: center;
 }
 
-.points li,
-.skills li {
-  line-height: 1.4;
-  word-wrap: break-word;
-}
-
-.images {
-  flex: 1 1 400px; 
+.swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 400px;
-  max-width: 500px; 
-  height: 400px;     
-  margin-top: 2rem;
-}
-
-/* Default desktop size */
-.swiper {
-  width: 450px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-slide img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  border-radius: 1rem;
-  background-color: #222;
 }
 
-/* ===========================
-   Responsive Mobile
-=========================== */
-@media (max-width: 768px) {
-  .proj-container {
-    flex-direction: column;
-  }
-
-  .image-container {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .tech-eng {
-    min-height: 10rem;
-    padding: 1rem;
-  }
-
-  .about-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .about-section .img {
-    width: 150px;
-  }
-
-  h1 {
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-  }
-
-  .title {
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
-  }
-
-  .swiper {
-    width: 100%;     /* take full width of container */
-    max-width: 300px; /* limit max width so it’s not too big */
-    height: 200px;    /* adjust height proportionally */
-  }
-
-  .swiper-slide img {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Contact section mobile stacking */
-  .contact-section-wrapper {
-    flex-direction: column;
-  }
-
-  .contact-info {
-    width: 100%;
-    margin-left: 0;
-    padding-right: 1rem;
-    margin-top: 1rem;
-  }
-
-  .contact-text {
-    width: 100%;
-  }
+.read-the-docs {
+  color: #888;
 }
 
 @media (max-width: 900px) {
