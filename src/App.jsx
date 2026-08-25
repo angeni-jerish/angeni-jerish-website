@@ -10,7 +10,6 @@ function App() {
   const [photoVisible, setPhotoVisible] = useState(false);
 
   return (
-<<<<<<< HEAD
     <>
       <div className="app">
         <h1 className="header">
@@ -169,19 +168,6 @@ function App() {
         </div>
       </div>
     </>
-=======
-    <div className="app">
-      {loading && (
-        <LoadingScreen
-          onLanded={() => setPhotoVisible(true)}
-          onComplete={() => setLoading(false)}
-        />
-      )}
-      <Landing photoVisible={photoVisible} />
-      <FileRow />
-      <ComingSoonSections />
-    </div>
->>>>>>> website2.0
   );
 }
 
